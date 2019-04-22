@@ -11,15 +11,16 @@
 
 	/* public vars */
 	coinjs.pub = 0x4b;
-	coinjs.priv = 0x22;
-	coinjs.multisig = 0x22;
+	coinjs.priv = 0xd2;
+	coinjs.multisig = 0x15;
+	coinjs.wif = 0xd2;
 	coinjs.hdkey = {'prv':0x0488ade4, 'pub':0x0488b21e};
 	//coinjs.bech32 = {'charset':'qpzry9x8gf2tvdw0s3jn54khce6mua7l', 'version':0, 'hrp':'bc'};
 
 	coinjs.compressed = false;
 
 	/* other vars */
-	coinjs.developer = 'ZV6JZXAbFTyjE5Bvsf1qtXVdftvybGioU3'; //bitcoin
+	coinjs.developer = 'XBRBB39Zj3ht7aiQiyWiwCGiK5Sz1gbeH6'; //bitcoinzero
 
 	/* bit(coinb.in) api vars */
 	coinjs.host = ('https:'==document.location.protocol?'https://':'http://')+'coinb.in/api/';
