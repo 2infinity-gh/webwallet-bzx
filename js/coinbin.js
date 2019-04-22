@@ -242,7 +242,7 @@ $(document).ready(function() {
 
 				}, signed);
 			} else {
-				$("#walletSendConfirmStatus").removeClass("hidden").addClass('alert-danger').html("You have a confirmed balance of "+dvalue+" ZCR unable to send "+total+" ZCR").fadeOut().fadeIn();
+				$("#walletSendConfirmStatus").removeClass("hidden").addClass('alert-danger').html("You have a confirmed balance of "+dvalue+" BZX unable to send "+total+" BZX").fadeOut().fadeIn();
 				thisbtn.attr('disabled',false);
 			}
 
@@ -338,8 +338,8 @@ $(document).ready(function() {
 			 $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
 		 },
 		 success: function(data) {
-			$("#walletBalance").html(data.balance+" ZCR").fadeOut().fadeIn();
-			$("#walletUncBalance").html(data.unconfirmedBalance+" ZCR").fadeOut().fadeIn();
+			$("#walletBalance").html(data.balance+" BZX").fadeOut().fadeIn();
+			$("#walletUncBalance").html(data.unconfirmedBalance+" BZX").fadeOut().fadeIn();
 
 			$("#walletLoader").addClass("hidden");
 		 },
@@ -359,8 +359,8 @@ $(document).ready(function() {
 			 $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
 		 },
 		 success: function(data) {
-			$("#walletBalance").html(data.balance+" ZCR").fadeOut().fadeIn();
-			$("#walletUncBalance").html(data.unconfirmedBalance+" ZCR").fadeOut().fadeIn();
+			$("#walletBalance").html(data.balance+" BZX").fadeOut().fadeIn();
+			$("#walletUncBalance").html(data.unconfirmedBalance+" BZX").fadeOut().fadeIn();
 
 			$("#walletLoader").addClass("hidden");
 		 },
@@ -467,9 +467,9 @@ $(document).ready(function() {
 		coinjs.addressBalance($("#walletAddress").html(),function(data){
 			if($(data).find("result").text()==1){
 				var v = $(data).find("balance").text()/100000000;
-				$("#walletBalance").html(v+" ZCR").attr('rel',v).fadeOut().fadeIn();
+				$("#walletBalance").html(v+" BZX").attr('rel',v).fadeOut().fadeIn();
 			} else {
-				$("#walletBalance").html("0.00 ZCR").attr('rel',v).fadeOut().fadeIn();
+				$("#walletBalance").html("0.00 BZX").attr('rel',v).fadeOut().fadeIn();
 			}
 
 			$("#walletLoader").addClass("hidden");
