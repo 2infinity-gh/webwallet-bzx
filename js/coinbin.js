@@ -1,11 +1,16 @@
 $(document).ready(function() {
 
 	/* open wallet code */
-    var explorer = "http://explorer.zcore.me/"
+    var explorer = "https://explorer.bitcoinzerox.net/"
     var explorer_api = explorer+"api"
-    var explorer_tx = explorer+"#/tx/"
-    var explorer_addr = explorer+"#/address/"
-    var explorer_block = explorer+"#/block/"
+	
+	var explorer_tx = "https://chainz.cryptoid.info/bzx/tx.dws?"
+	var explorer_addr = "https://chainz.cryptoid.info/bzx/address.dws?"
+	var explorer_block = "https://chainz.cryptoid.info/bzx/block.dws?"
+	
+    //var explorer_tx = explorer+"#/tx/"
+    //var explorer_addr = explorer+"#/address/"
+    //var explorer_block = explorer+"#/block/"
 
 	var wallet_timer = false;
 	var tx_timer = false;
@@ -58,7 +63,7 @@ $(document).ready(function() {
 
 					$("#walletQrCode").html("");
 					var qrcode = new QRCode("walletQrCode");
-					qrcode.makeCode("zcore:"+address);
+					qrcode.makeCode("bzx:"+address);
 
 					$("#walletKeys .privkey").val(wif);
 					$("#walletKeys .pubkey").val(pubkey);
@@ -95,7 +100,7 @@ $(document).ready(function() {
 
 		$("#walletQrCode").html("");
 		var qrcode = new QRCode("walletQrCode");
-		qrcode.makeCode("zcore:");
+		qrcode.makeCode("bzx:");
 
 		$("#walletKeys .privkey").val("");
 		$("#walletKeys .pubkey").val("");
@@ -1012,7 +1017,7 @@ $(document).ready(function() {
 
 			QCodeDecoder().decodeFromCamera(document.getElementById('videoReader'), function(er,data){
 				if(!er){
-					var match = data.match(/^zcore\:([13][a-z0-9]{26,33})/i);
+					var match = data.match(/^bzx\:([13][a-z0-9]{26,33})/i);
 					var result = match ? match[1] : data;
 					$(""+$("#qrcode-scanner-callback-to").html()).val(result);
 					$("#qrScanClose").click();
@@ -1353,13 +1358,13 @@ $(document).ready(function() {
 		rawSubmitDefault(this);
 	});
 
-	// broadcast transaction vai coinbin (default)
+	// broadcast transaction via electrum api (default)
 	function rawSubmitDefault(btn){ 
 		var thisbtn = btn;		
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
-			url: coinjs.zcoreapi+'/tx/send',
+			url: coinjs.bzxapi+'/send',
 			data: {'rawtx':$("#rawTransaction").val()},
 			dataType: "json",
 			error: function(data) {
@@ -1413,7 +1418,7 @@ $(document).ready(function() {
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
-			url: "http://explorer.zcore.me/api/tx/send",
+			url: "http://explorer.bitcoinzerox.net/api/send",
 			data: {"tx_hex":$("#rawTransaction").val()},
 			dataType: "json",
 			error: function(data) {
@@ -1442,7 +1447,7 @@ $(document).ready(function() {
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
-			url: "http://explorer.zcore.me/api/tx/send",
+			url: "http://explorer.bitcoinzerox.net/api/send",
 			data: JSON.stringify({"tx":$("#rawTransaction").val()}),
 			error: function(data) {
 				var obj = $.parseJSON(data.responseText);
@@ -1863,7 +1868,7 @@ $(document).ready(function() {
 			}
 		} else {
 			var qrcode = new QRCode("qrcode");
-			qrstr = "zcore:"+$('.address',thisbtn).val();
+			qrstr = "bzx:"+$('.address',thisbtn).val();
 		}
 
 		if(qrstr){

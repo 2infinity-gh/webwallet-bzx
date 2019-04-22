@@ -10,11 +10,11 @@
 	var coinjs = window.coinjs = function () { };
 
 	/* public vars */
-	coinjs.pub = 0x50;
-	coinjs.priv = 0x50;
-	coinjs.multisig = 0x00;
-	coinjs.hdkey = {'prv':0x0988ade4, 'pub':0x0888b21e};
-	coinjs.bech32 = {'charset':'qpzry9x8gf2tvdw0s3jn54khce6mua7l', 'version':0, 'hrp':'bc'};
+	coinjs.pub = 0x4b;
+	coinjs.priv = 0x22;
+	coinjs.multisig = 0x22;
+	coinjs.hdkey = {'prv':0x0488ade4, 'pub':0x0488b21e};
+	//coinjs.bech32 = {'charset':'qpzry9x8gf2tvdw0s3jn54khce6mua7l', 'version':0, 'hrp':'bc'};
 
 	coinjs.compressed = false;
 
@@ -23,7 +23,7 @@
 
 	/* bit(coinb.in) api vars */
 	coinjs.host = ('https:'==document.location.protocol?'https://':'http://')+'coinb.in/api/';
-	coinjs.zcoreapi = 'http://explorer.zcore.me/api';
+	coinjs.bzxapi = 'http://explorer.bitcoinzerox.net/api';
 	coinjs.uid = '1';
 	coinjs.key = '12345678901234567890123456789012';
 
@@ -1092,7 +1092,7 @@
 		/* broadcast a transaction */
 		r.broadcast = function(callback, txhex){
 			var tx = txhex || this.serialize();
-			coinjs.ajax(coinjs.zcoreapi+'/tx/send', callback, "POST", tx);
+			coinjs.ajax(coinjs.bzxapi+'/tx/send', callback, "POST", tx);
 		}
 
 		/* generate the transaction hash to sign from a transaction input */
