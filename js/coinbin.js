@@ -332,14 +332,14 @@ $(document).ready(function() {
 	 addr =  $("#walletAddress").html();
 	 $.ajax ({
 		 type: "GET",
-		 url: explorer_api+"/addr/"+$("#walletAddress").html(),
+		 url: explorer_api+"/ext/?command=getbalance&wallet="+$("#walletAddress"),
 		 dataType: "json",
 		 error: function(data) {
 			 $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
 		 },
 		 success: function(data) {
-			$("#walletBalance").html(data.balance+" BZX").fadeOut().fadeIn();
-			$("#walletUncBalance").html(data.unconfirmedBalance+" BZX").fadeOut().fadeIn();
+			$("#walletBalance").html(data.balance.confirmed+" BZX").fadeOut().fadeIn();
+			$("#walletUncBalance").html(data.balance.unconfirmed+" BZX").fadeOut().fadeIn();
 
 			$("#walletLoader").addClass("hidden");
 		 },
