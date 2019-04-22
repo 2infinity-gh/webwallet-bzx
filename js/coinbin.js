@@ -332,7 +332,7 @@ $(document).ready(function() {
 	 addr =  $("#walletAddress").html();
 	 $.ajax ({
 		 type: "GET",
-		 url: explorer_api+"/ext/?command=getbalance&wallet="+$("#walletAddress"),
+		 url: explorer_api+"/ext/?command=getbalance&wallet="+$("#walletAddress").html(),
 		 dataType: "json",
 		 error: function(data) {
 			 $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
