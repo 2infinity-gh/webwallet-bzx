@@ -393,7 +393,7 @@ $(document).ready(function() {
 	function getAddressTx(cb, cberr){
 		$.ajax ({
 			type: "GET",
-			url: explorer_api+"/addr/"+$("#walletAddress").html(),
+			url: explorer_api+"/ext/?command=addr&wallet="+$("#walletAddress").html(),
 			dataType: "json",
 			error: function(data) {
 				cberr();
