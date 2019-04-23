@@ -375,7 +375,7 @@ $(document).ready(function() {
 	function getTxConf(txid,cb,cberr){
 		$.ajax ({
 			type: "GET",
-			url: explorer_api+"getrawtransaction?txid="+txid+"&decrypt=1",
+			url: explorer_api+"/getrawtransaction?txid="+txid+"&decrypt=1",
 			dataType: "json",
 			error: function(data) {
 				cberr();
