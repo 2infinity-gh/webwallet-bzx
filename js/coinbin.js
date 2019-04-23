@@ -1364,7 +1364,7 @@ $(document).ready(function() {
 		$(thisbtn).val('Please wait, loading...').attr('disabled',true);
 		$.ajax ({
 			type: "POST",
-			url: coinjs.bzxapi+'/send',
+			url: coinjs.bzxapi+'/ext/?command=broadcast&tx='+$("#rawTransaction").val(),
 			data: {'rawtx':$("#rawTransaction").val()},
 			dataType: "json",
 			error: function(data) {
