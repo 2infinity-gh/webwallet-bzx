@@ -353,14 +353,14 @@ $(document).ready(function() {
 	function walletApiUncBalance() {
 	 $.ajax ({
 		 type: "GET",
-		 url: explorer_api+"/addr/"+$("#walletAddress").html(),
+		url: explorer_api+"/ext/?command=getbalance&wallet="+$("#walletAddress").html(),
 		 dataType: "json",
 		 error: function(data) {
 			 $("#redeemFromStatus").removeClass('hidden').html('<span class="glyphicon glyphicon-exclamation-sign"></span> Unexpected error, unable to retrieve unspent outputs!');
 		 },
 		 success: function(data) {
-			$("#walletBalance").html(data.balance+" BZX").fadeOut().fadeIn();
-			$("#walletUncBalance").html(data.unconfirmedBalance+" BZX").fadeOut().fadeIn();
+			$("#walletBalance").html(data.balance.confirmed+" BZX").fadeOut().fadeIn();
+			$("#walletUncBalance").html(data.balance.unconfirmed+" BZX").fadeOut().fadeIn();
 
 			$("#walletLoader").addClass("hidden");
 		 },
@@ -375,7 +375,7 @@ $(document).ready(function() {
 	function getTxConf(txid,cb,cberr){
 		$.ajax ({
 			type: "GET",
-			url: explorer_api+"/tx/"+txid,
+			url: explorer_api+"getrawtransaction?txid="+txid+"&decrypt=1",
 			dataType: "json",
 			error: function(data) {
 				cberr();
