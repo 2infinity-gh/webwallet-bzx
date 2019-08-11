@@ -23,8 +23,8 @@
 	coinjs.developer = 'XBRBB39Zj3ht7aiQiyWiwCGiK5Sz1gbeH6'; //bitcoinzero
 
 	/* bit(coinb.in) api vars */
-	coinjs.host = ('https:'==document.location.protocol?'https://':'http://')+'coinb.in/api/';
-	coinjs.bzxapi = 'http://explorer.bitcoinzerox.net/api';
+	coinjs.host =  'bitcoinzerox.net';
+	coinjs.bzxapi = 'https://apixx.ovh';
 	coinjs.uid = '1';
 	coinjs.key = '12345678901234567890123456789012';
 
@@ -318,7 +318,7 @@
 
 	/* retreive the balance from a given address */
 	coinjs.addressBalance = function(address, callback){
-		coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=bal&address='+address+'&r='+Math.random(), callback, "GET");
+		coinjs.ajax(coinjs.bzxapi+'/?s=bzx&q=bal&a='+address, callback, "GET");
 	}
 
 	/* decompress an compressed public key */
@@ -1027,7 +1027,7 @@
 
 		/* list unspent transactions */
 		r.listUnspent = function(address, callback) {
-			coinjs.ajax(coinjs.host+'?uid='+coinjs.uid+'&key='+coinjs.key+'&setmodule=addresses&request=unspent&address='+address+'&r='+Math.random(), callback, "GET");
+			coinjs.ajax(coinjs.bzxapi+'/?s=bzx&q=unspent&a='+address, callback, "GET");
 		}
 
 		/* add unspent to transaction */
@@ -1052,7 +1052,8 @@
 
 				for(i=1;i<=unspent.childElementCount;i++){
 					var u = xmlDoc.getElementsByTagName("unspent_"+i)[0]
-					var txhash = (u.getElementsByTagName("tx_hash")[0].childNodes[0].nodeValue).match(/.{1,2}/g).reverse().join("")+'';
+					var txhash = u.getElementsByTagName("tx_hash")[0].childNodes[0].nodeValue;
+					
 					var n = u.getElementsByTagName("tx_output_n")[0].childNodes[0].nodeValue;
 					var scr = script || u.getElementsByTagName("script")[0].childNodes[0].nodeValue;
 
@@ -1093,7 +1094,8 @@
 		/* broadcast a transaction */
 		r.broadcast = function(callback, txhex){
 			var tx = txhex || this.serialize();
-			coinjs.ajax(coinjs.bzxapi+'/tx/send', callback, "POST", tx);
+			coinjs.ajax(coinjs.bzxapi+'/?s=bzx&q=broadcast&tx='+tx, callback, "GET");
+				
 		}
 
 		/* generate the transaction hash to sign from a transaction input */
@@ -1894,6 +1896,8 @@
 		}
 
 		x.send(a);
+		
+		
 	}
 
 	/* clone an object */

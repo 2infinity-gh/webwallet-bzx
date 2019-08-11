@@ -40,9 +40,12 @@
 
         <script type="text/javascript" src="js/coin.js"></script>
         <script type="text/javascript" src="js/coinbin.js"></script>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+		
     </head>
 
     <body>
+	<div id="particles-js"></div>
         <div id="wrap">
             <!-- Fixed navbar -->
             <div id="header" class="navbar navbar-default " role="navigation">
@@ -54,7 +57,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-                        <a href="#home" class="navbar-brand" id="homeBtn"><img src="images/bzx.png" style="height:25px;margin-top:-5px"></a>
+                        <a href="#home" class="navbar-brand" id="homeBtn"><img src="images/bzx_webwallet.png" style="height:60px;margin-top:-5px"></a>
                     </div>
                     <div class="collapse navbar-collapse">
                         <ul class="nav navbar-nav">
@@ -64,7 +67,7 @@
                                     <li><a href="#newAddress" data-toggle="tab">Address</a></li>
                                     <!-- <li><a href="#newSegWit" data-toggle="tab">SegWit Address</a></li>-->
                                     <li><a href="#newMultiSig" data-toggle="tab">MultiSig Address</a></li>
-                                    <li><a href="#newTimeLocked" data-toggle="tab">Time Locked Address</a></li>
+                                    
                                     <li><a href="#newHDaddress" data-toggle="tab">HD Address</a></li>
                                     <li class="divider"></li>
                                     <li><a href="#newTransaction" data-toggle="tab">Transaction</a></li>
@@ -74,10 +77,20 @@
                             <li><a href="#sign" data-toggle="tab"><span class="glyphicon glyphicon-pencil"></span> Sign</a></li>
                             <li><a href="#broadcast" data-toggle="tab"><span class="glyphicon glyphicon-globe"></span> Broadcast</a></li>
                             <li><a href="#wallet" data-toggle="tab"><span class="glyphicon glyphicon-briefcase"></span> Wallet</a></li>
+							<li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-plus"></span> Manual<b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#manual_new_transaction" data-toggle="tab">New Transaction</a></li>
+                                    <li><a href="#manual_new_address" data-toggle="tab">New Address</a></li>
+                                    <li><a href="#manual_new_ms_address" data-toggle="tab">New MultiSig Address</a></li>
+                                    <li><a href="#manual_new_hd_address" data-toggle="tab">New HD Address</a></li>
+                                    <li><a href="#manual_verify" data-toggle="tab">Verify</a></li>
+									<li><a href="#manual_sign" data-toggle="tab">Sign</a></li>
+									<li><a href="#manual_broadcast" data-toggle="tab">Broadcast</a></li>
+									<li><a href="#manual_wallet" data-toggle="tab">Wallet</a></li>
+                                </ul>
+                            </li>
                             <li><a href="#about" data-toggle="tab"><span class="glyphicon glyphicon-info-sign"></span> About</a></li>
-
-                            <li class="hidden"><a href="#settings" data-toggle="tab"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
-                            <li class="hidden"><a href="#fees" data-toggle="tab"><span class="glyphicon glyphicon-tag"></span> Fees</a></li>
                         </ul>
                     </div>
                 </div>
@@ -90,13 +103,11 @@
                 <div class="tab-content">
                     <div class="tab-pane tab-content active" id="home">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h2>BitcoinZero Wallet <small>Welcome to the Blockchain</small></h2>
-                            </div>
+
                         </div>
 
                         <div class="jumbotron">
-                            <h1>BitcoinZero. It's your money!</h1>
+                            <h1>BitcoinZero WebWallet!</h1>
                             <p>Be your own bank, take control of your own money and start using BitcoinZero today!</p>
                             <p><a class="btn btn-primary btn-lg" href="#about" role="button">Learn more &raquo;</a></p>
                         </div>
@@ -104,45 +115,30 @@
                         <hr>
 
                         <div class="row">
-                            <div class="col-md-4">
-                                <h3><span class="glyphicon glyphicon-ok"></span> Open Source</h3>
-                                <p>Coinbin is an open source web based wallet written in javascript and released under the <a href="LICENSE">MIT license</a> which means it's free to use and edit.</p>
-                            </div>
 
                             <div class="col-md-4">
-                                <h3><span class="glyphicon glyphicon-fullscreen"></span> MultiSig</h3>
-                                <p>We offer a fully transparent <a href="#newMultiSig">multisig</a> solution which works seamlessly offline and with other BitcoinZero clients.</p>
+                                <h3><span class="glyphicon glyphicon-ok"></span> Transparent</h3>
+                                <p>We offer a fully transparent solution which works seamlessly offline and with other BitcoinZero clients.</p>
                             </div>
 
                             <div class="col-md-4">
                                 <h3><span class="glyphicon glyphicon-bitcoin"></span> Raw Transactions</h3>
                                 <p><a href="#newTransaction">Create</a>, <a href="#verify">verify</a>, <a href="#sign">sign</a> and <a href="#broadcast">broadcast</a> custom raw transactions online with advanced features and minimal effort!</p>
                             </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-md-4">
+							
+							<div class="col-md-4">
                                 <h3><span class="glyphicon glyphicon-piggy-bank"></span> Wallet</h3>
-                                <p>Quick access to an <a href="#wallet">online wallet</a> where only you have access to your own private keys &amp; can <a href="#fees">calculate your own fee</a>!</p>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h3><span class="glyphicon glyphicon-globe"></span> Addresses</h3>
-                                <p>We support <a href="#newAddress">regular addresses</a> and <a href="#newMultiSig">multisig</a>.
-                                    <!-- <a href="#newSegWit">segwit / bech32</a> and stealth all with access to your own private keys!--></p>
-                            </div>
-
-                            <div class="col-md-4">
-                                <h3><span class="glyphicon glyphicon-wrench"></span> Development</h3>
-                                <p>Use what we've built to write your own projects! See our documention (coming soon), or contribute at <a href="https://github.com/OutCast3k/coinbin/">github</a>.</p>
+                                <p>Quick access to an <a href="#wallet">online wallet</a> where only you have access to your own private keys!</p>
                             </div>
                         </div>
+
+                        
                     </div>
 
                     <div class="tab-pane tab-content" id="wallet">
                         <div class="row">
                             <div class="col-md-12">
-                                <h2>Open Wallet <small> browser based bitcoinzero wallet</small></h2>
+                                
                                 <div id="openLogin">
                                     <form class="form-signin" role="form" action="javascript:;">
 
@@ -183,7 +179,7 @@
                                                 <span id="walletLoader" class="hidden"><img src="images/loader.gif"></span>
                                                 <span id="walletAddress"></span>
                                                 <div class="btn-group">
-                                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" id="walletToBtn">Legacy <span class="caret"></span></button>
+                                                    <button type="button" class="hideclass btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" id="walletToBtn">Legacy <span class="caret"></span></button>
                                                     <ul class="dropdown-menu">
                                                         <!-- <li><a href="javascript:;" id="walletToSegWit">SegWit</a></li>
 														<li><a href="javascript:;" id="walletToSegWitBech32">SegWit/Bech32</a></li> -->
@@ -193,24 +189,21 @@
                                             </div>
                                             <br>
 
-                                            <div style="text-align:center; width:650px;">
-                                                <div style="position:relative; width:auto; left:40%" align="center">
-                                                    <ul class="nav nav-pills" role="tablist">
-                                                        <li role="presentation" class="active"><a href="javascript:;" id="walletBalance" title="Balance">0.00 BZX</a></li>
-                                                        <li role="presentation" class="active"><a style="background-color: #9e2323; color:white;" title="Unconfirmed Balance" href="javascript:;" id="walletUncBalance">0.00 BZX</a></li>
-                                                    </ul>
+                                            <div style="text-align:center; width:330px;">
+                                                <div style="position:relative; align="center">
+                                                    <div class="nav-saldo nav-pills saldo" role="tablist">
+                                                        <div  class="active saldo_conf"><a href="javascript:;" id="walletBalance" class="saldonav" style="color: #fff !important;" title="Balance">0.00 BZX</a></div>
+                                                        <div  class="active saldo_unconf"><a style="background-color: #9e2323;color: #fff !important;" class="saldonav" title="Unconfirmed Balance" href="javascript:;" id="walletUncBalance">0.00 BZX</a></div>
+                                                    </div>
                                                 </div>
                                                 <br>
-                                                <ul class="nav nav-pills" role="tablist" style="position:relative; width:auto; left:8%">
+                                                <ul class="nav nav-pills saldo" role="tablist" style="position:relative;text-align:center;">
                                                     <li role="presentation"><a href="javascript:;" id="walletShowSpend">Spend</a></li>
-                                                    <li role="presentation"><a id="walletHistory" href="javascript:;" title="External link" target="_blank">History</a></li>
-                                                    <li role="presentation"><a href="https://crex24.com/exchange/BZX-BTC" title="External link" target="_blank">Buy</a></li>
                                                     <li role="presentation"><a href="javascript:;" id="walletShowKeys">Keys</a></li>
                                                     <li role="presentation"><a href="javascript:;" id="walletTxShow">Transactions</a></li>
-                                                    <li role="presentation"><a href="https://bitcoinzero.network/mnsystem-dashboard.php" title="External link" target="_blank">Host Masternode</a></li>
                                                 </ul>
 
-                                                <br>
+                                                
 
                                                 <div id="walletTxHistory" class="hidden">
                                                     <h3>Transaction list</h3>
@@ -275,11 +268,11 @@
                                                     <div class="row">
                                                         <div class="col-xs-6">
                                                             <label><abbr title="the amount to pay in network miner fee">Transaction Fee</abbr>&nbsp;&nbsp;<a href="javascript:;" id="feesestwallet"><span class="glyphicon glyphicon-question-sign"></span></a></label>
-                                                            <input type="text" class="form-control" value="0.00004000" id="txFee">
+                                                            <input type="text" class="form-control" value="0.001" id="txFee">
                                                         </div>
                                                         <div class="col-xs-5">
                                                             <label><abbr title="the amount to donate to wallet.bitcoinzero.cash">Donation</abbr></label>
-                                                            <input type="text" class="form-control" value="0.003" id="developerDonation">
+                                                            <input type="text" class="form-control" value="0.0000" id="developerDonation">
                                                         </div>
                                                     </div>
                                                     <br>
@@ -287,7 +280,8 @@
                                                     <div id="walletSendStatus" class="alert alert-danger hidden"></div>
 
                                                     <button class="btn btn-primary" type="button" id="walletSendBtn">Send</button>
-                                                    <button class="btn btn-default" type="button">Reset</button>
+                                                    <button class="btn btn-default" type="button">Reset</button><br>
+													<em class="text-muted">If your funds exceed the amount your sending the remaining funds will automatically be restored in your wallet</em>
                                                 </div>
                                             </div>
                                         </div>
@@ -356,51 +350,7 @@
                             <input type="button" class="btn btn-primary" value="Generate" id="newKeysBtn">
                             <br>
                         </div>
-                        <!--
-					<div class="tab-pane tab-content" id="newSegWit">
-						<h2>New SegWit Address <small> Smaller &amp; Faster Transactions</small></h2>
-
-						<p>Any keys used you will need to manually store safely as they will be needed later to redeem the bitcoins.</p>
-
-						<label>SegWit Address (Share)</label>
-
-						<div class="input-group">
-							<input id="newSegWitAddress" type="text" class="form-control address" value="" readonly>
-							<span class="input-group-btn">
-								<button class="qrcodeBtn btn btn-default" type="button" data-toggle="modal" data-target="#modalQrcode"><span class="glyphicon glyphicon-qrcode"></span></button>
-							</span>
-						</div>
-
-						<label>RedeemScript</label>
-						<input id="newSegWitRedeemScript" type="text" class="form-control" readonly>
-
-						<label>Public key</label>
-						<input id="newSegWitPubKey" type="text" class="form-control" readonly>
-
-						<label>Private key (WIF key)</label>
-						<div class="input-group">
-							<input id="newSegWitPrivKey" type="password" class="form-control" value="" readonly>
-							<span class="input-group-btn">
-								<button class="showKey btn btn-default" type="button">Show</button>
-							</span>
-						</div>
-
-
-						<h3>Address Options</h3>
-						<p>You can use the advanced options below to generate different kind of keys and addresses.</p>
-
-						<div class="checkbox">
-							<label><input type="checkbox" id="newSegWitBech32addr" class="checkbox-inline" checked> Enable <a href="https://en.bitcoin.it/wiki/Bech32" target="_blank">Bech32</a>?</label>
-						</div>
-
-						<div class="checkbox">
-							<label><input type="checkbox" id="newSegWitBrainwallet" class="checkbox-inline"> Custom Seed or Brain Wallet</label>
-							<input type="text" class="form-control hidden" id="brainwalletSegWit">
-						</div>
-
-						<input type="button" class="btn btn-primary" value="Generate" id="newSegWitKeysBtn">
-						<br>
-					</div>-->
+                        
 
                         <div class="tab-pane tab-content" id="newMultiSig">
                             <h2>New Multisig Address <small>Secure multisig address</small></h2>
@@ -646,8 +596,7 @@
                                     <hr>
 
                                     <label>Network</label>
-                                    <p>The <a href="#settings">settings</a> page can be used to select alternative networks of which you can retrieve your unspent outputs and broadcast a signed transaction into.</p>
-
+                                  
                                     <hr>
                                 </div>
                             </div>
@@ -1341,7 +1290,7 @@
 
                         <div class="tab-pane tab-content" id="broadcast">
                             <h2>Broadcast Transaction <small>into the bitcoinzero network</small></h2>
-                            <a href="#settings" style="float:right;"><span class="glyphicon glyphicon-cog"></span></a>
+
                             <p>Enter your hex encoded bitcoinzero transaction</p>
                             <textarea class="form-control" style="height:125px" id="rawTransaction"></textarea>
                             <br>
@@ -1358,30 +1307,24 @@
                         </div>
 
                         <div class="tab-pane tab-content" id="about">
-                            <h2>About <small>open source bitcoinzero wallet</small></h2>
-                            <p>Version 1.4</p>
+                            <h2>About <small>Bitcoinzero Webwallet</small></h2>
+                            <p>Version 1.0</p>
                             <p>Compatible with bitcoinzero core</p>
-                            <p>Forum <a href="https://bitcoinzero.network">https://bitcoinzero.network</a></p>
+                            <p>Website <a href="https://bitcoinzerox.net">https://bitcoinzerox.net</a></p>
                             <h3>What is BitcoinZero?</h3>
                             <p>BitcoinZero is a type of digital currency in which encryption techniques are used to regulate the generation of units of currency and verify the transfer of funds, operating independently of a central bank. See <a href="https://bitcoinzero.cash"
                                     target="_blank">https://bitcoinzerox.net</a> for more information.</p>
-                            <h3>Information</h3>
-                            <p>Coinb.in is a free and open source project released under the MIT license, originally by <a href="https://bitcointalk.org/index.php?action=profile;u=34834" target="_blank">OutCast3k</a> in 2013. Discussion of the project can
-                                be found at <a href="https://bitcointalk.org/index.php?topic=390046" target="_blank">bitcointalk.org</a> during its early testing stages when its primary focus was to develop a proof of concept multisig solution in javascript.</p>
-                            <p>Coinb.in is run and funded by the generosity of others in terms of <a href="https://github.com/OutCast3k/coinbin/graphs/contributors" target="_blank">development</a> and hosting.</p>
+                            
                             <h3>Privacy</h3>
-                            <p>Coinb.in believes strongly in privacy, not only do we support the use of TOR, the site does not collect and store IP or transaction data via our servers nor do we store your bitcoinzero private key. We do route traffic via cloudflare
-                                using an SSL certificate.</p>
-                            <h3>Support</h3>
-                            <p>We recommend that you first check our <a href="https://status.bitcoinzero.cash/" target="_blank">service status</a> page and then <a href="https://blog.coinb.in/" target="_blank">blog</a> page which has multiple <a href="https://blog.coinb.in/guides"
-                                    target="_blank">guides</a>. However if the problem persists you can contact us by emailing support{at}coinb.in.</p>
+                            <p>The Bitcoinzero team believes strongly in privacy, not only do we support the use of TOR, the site does not collect and store IP or transaction data via our servers nor do we store your bitcoinzero private key. We do route traffic via an SSL certificate.</p>
+            
                             <h3>Donate</h3>
-                            <p>Please donate to <a href="bzx:XBRBB39Zj3ht7aiQiyWiwCGiK5Sz1gbeH6">XBRBB39Zj3ht7aiQiyWiwCGiK5Sz1gbeH6</a> if you found this project useful or want to see more features!</p>
+                            <p>Please donate to <a href="bzx:XBRBB39Zj3ht7aiQiyWiwCGiK5Sz1gbeH6">XBRBB39Zj3ht7aiQiyWiwCGiK5Sz1gbeH6</a> if you find this website useful or want to see more features!</p>
                         </div>
 
                         <div class="tab-pane tab-content" id="settings">
-                            <h2>Settings <small> making coinb.in even better!</small></h2>
-                            <p>These simple settings below make coinb.in one of the most decentralized wallets in the world.</p>
+                            <h2>Settings <small> making this webwallet even better!</small></h2>
+                            
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -1467,9 +1410,322 @@
                             <input type="submit" class="btn btn-primary" id="settingsBtn">
 
                         </div>
+						
 
-                        <br>
-                        <p class="text-muted">This page uses javascript to generate your addresses and sign your transactions within your browser, this means we <i>never</i> receive your private keys, this can be independently verified by reviewing the source code on <a href="https://github.com/OutCast3k/coinbin/"
+                        <div class="tab-pane tab-content" id="manual_new_transaction">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+											<div class="post-content" style="max-width:800px;margin:auto;">
+									
+								                <p style="text-align: center;">
+												<div class="body-text">
+												<h2 id="h233sj9rev8931yj8581lh1asi15jz34v" style="text-align: center;">Create a New Transaction</h2>
+												<p style="text-align: center;">Create a transaction, prior to signing and broadcasting to the bitcoinzero network.&nbsp;</p>
+												<hr>
+												<p style="text-align: center;"><em>1)&nbsp;</em>Navigate to&nbsp;<a href="https://webwallet.bitcoinzerox.net/#newTransaction">https://webwallet.bitcoinzerox.net/#newTransaction</a>&nbsp;<em>(New &gt; Transaction.)</em></p>
+												<p style="text-align: center;"><img alt="" src="./images/menu_newtx.png" width="100%"></p>
+												<p style="text-align: center;"><em>2) </em>Enter an&nbsp;<em>Address, WIF key, privatekey or Redeem Script</em>&nbsp;and click <em>Load</em>.</p>
+												<p style="text-align: center;"><img src="./images/loadedtx.png" width="100%"></p>
+												<p style="text-align: center;">Note: <em>Inputs automatically </em>displays a balance.</p>
+												<p style="text-align: center;"><em>3) </em>Review <em>Inputs</em> tab to ensure correct data/further information.</p>
+												<p style="text-align: center;"><img src="./images/loadedtxinputs.png" width="100%"></p>
+												<p style="text-align: center;"><em>4)</em> Enter your&nbsp;<em>Outputs&nbsp;</em>and click&nbsp;<em>Submit</em>.&nbsp;<br><em> Note: Make sure to add a changeaddress if your funds exceed the amount you are sending or else the remaining funds will be lost in fees.</em></p>
+												<p style="text-align: center;"><img alt="" src="./images/txoutputs.png" width="100%"></p>
+												<p style="text-align: center;"><em>4a) Example of high fees warning.&nbsp;</em></p>
+												<p style="text-align: center;"><em><img alt="" src="./images/highfeewarning.gif" width="100%"></em></p>
+												<p style="text-align: center;"><em>5)</em> You are presented with a hex encoded t<em>ransaction</em>, this can now be verified, signed and then finally broadcast.&nbsp;</p>
+												<p style="text-align: center;"><img alt="" src="./images/txgenerated.png" width="100%"></p>
+												
+												</div>
+												</p>	
+											</div>
+                                </div>
+                            </div>
+
+
+
+                        </div>
+						
+                        <div class="tab-pane tab-content" id="manual_new_address">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+										<div class="post-content" style="max-width:800px;margin:auto;">
+										
+												
+										        <p style="text-align: center;">
+												<div class="body-text">
+												<h2 id="h5sj9rpbw1ulpu15p2kzdn61ufsajs" style="text-align: center;">Create a Bitcoinzero Address</h2>
+												<hr>
+												
+												
+												
+												<p style="text-align: center;"><em>1)</em> Navigate to&nbsp;<a href="https://webwallet.bitcoinzerox.net/#newAddress" rel="noopener" target="_blank">https://webwallet.bitcoinzerox.net/#newAddress</a>&nbsp;<em>(New &gt; Address.)</em></p>
+												<p style="text-align: center;"><em><img src="./images/menu_newaddr.png" width="100%"></em></p>
+												<p style="text-align: center;"><em><br>2) </em>Click<em> Generate.</em></p>
+												<p style="text-align: center;"><img alt="./images/newaddresslegacysub.png" src="./images/newaddresslegacysub.png" width="100%"></p>
+												<p style="text-align: center;">You can now fund the address.<em><br></em></p>
+												
+												</div></p>	
+												
+										</div>		
+												
+                                </div>
+                            </div>
+
+
+
+                        </div>
+						
+						<div class="tab-pane tab-content" id="manual_new_ms_address">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+										<div class="post-content" style="max-width:800px;margin:auto;">
+										
+											<p style="text-align: center;"><div class="body-text">
+												<h2 id="h160sj9ruq74nhynap919kwfs6csygjz" style="text-align: center;">Create a MultiSig Address</h2>
+												<p style="text-align: center;">Multisignature (multisig) refers to requiring more than one (private) key to authorize a Bitcoin&nbsp;transaction. It is generally used to divide up responsibility for possession of bitcoins. </p>
+												<p style="text-align: center;" class="text-muted"><em>Use example</em>:<em > Bob is purchasing an item from Lucy, Bob wants to ensure Lucy delivers the item before Bob’s payment is released to Lucy.&nbsp; A trusted third party (the escrow agent) is introduced, his name is John.&nbsp; &nbsp;</em><br><em>A multisig wallet is created by Bob, configured so that it requires two signatures (out of three) to release the payment to Lucy’s wallet.&nbsp;</em><br><em>Bob sends the required payment amount to the multisig wallet address, of which all parties can view the balance publicly.&nbsp; &nbsp;</em><br><em>Lucy sends the item to Bob and upon delivery Bob sends John a picture of the item in his possession. At this stage both Bob and John can sign the transaction and release payment to Lucy.&nbsp; &nbsp;If however the conditions of the trade are not met, John simply provides&nbsp;arbitration to resolve the disagreement and John can choose either Bob or Lucy to sign the transaction with (payment vs refund.)</em></p>
+												<hr>
+												
+												
+												<p style="text-align: center;"><em>1)&nbsp;</em>Navigate to&nbsp;<a href="https://webwallet.bitcoinzerox.net/#newMultiSig" rel="noopener" target="_blank">https://webwallet.bitcoinzerox.net/#newMultiSig</a>&nbsp;<em>(New &gt; MultiSig Address)</em> to create a MultiSig address.</p>
+												<p style="text-align: center;"><img src="./images/menu_new_ms_addr.png" width="100%"></p>
+												<p style="text-align: center;"><em>2)&nbsp;</em>Choose how many participants are required <em>(this example uses three)</em> by adding and/or removing, using the relative buttons<em> (+/-)</em> to the right of the public key text fields.&nbsp;</p>
+												<p style="text-align: center;"><em>2a)</em> Insert the public keys of the participants addresses&nbsp;<em>(you/participants can create wallets at&nbsp;<a href="https://webwallet.bitcoinzerox.net/#newAddress">https://webwallet.bitcoinzerox.net/#newAddress</a>)<br></em></p>
+												<p style="text-align: center;"><em>2c)</em> Select the <em>amount of signatures required to release the coins.</em></p>
+												<p style="text-align: center;"><em>2d) </em>Once you have confirmed the correct input, click&nbsp;<em>Submit</em>.</p>
+												<p style="text-align: center;"><img alt="" src="./images/step2.gif" width="100%"></p>
+												<p style="text-align: center;"><em>3)&nbsp;</em>You will now be presented with a payment <em>Address*</em>, <em>Redeem Script**</em> and <em>Shareable URL***</em>.&nbsp;</p>
+												<p style="text-align: center;"><sub><em>*Contributors should send the required payment amount to this address.</em></sub><br><sub><em>**All participants should be provided with the redeem script, prior to payments being made.</em></sub><br><sub><em>***This URL will direct participants to a read-only page with the information generated by you (see image B).&nbsp;</em></sub></p>
+												<p style="text-align: center;"><img alt="" src="./images/step3.gif" width="100%"></p>
+												<p style="text-align: center;"><em><sub>Image B</sub></em><br><img alt="" src="./images/step4.gif" width="100%"></p>
+												<p style="text-align: center;">Note: You can manually verify the redeem script by entering it at&nbsp;<a href="https://webwallet.bitcoinzerox.net/#verify">https://webwallet.bitcoinzerox.net/#verify</a><em>&nbsp;(see Image B above.)</em></p>
+												<h4>&nbsp;</h4>
+												<hr>
+												<h4 id="h73sj9ss2zzl1w9ezgqi9ci7i18kns5s" style="text-align: center;">QUICK HINT: How to spend from a MultiSig Address</h4>
+												<p style="text-align: center;" class="text-muted"><em>In this example, two of three private keys/participants are required to sign the redeem&nbsp;script.<br><br></em>One of three participants must now generate a <a href="https://blog.coinb.in/guide_transaction" rel="noopener" target="_blank">new transaction</a> using the redeem script created in step 1.</p>
+												<p style="text-align: center;" class="text-muted">Once a transaction has been created, the same participant must <a href="https://webwallet.bitcoinzerox.net/#sign" rel="noopener" target="_blank">sign</a> the transaction using their private key.&nbsp;</p>
+												<p style="text-align: center;" class="text-muted">Once signed, the participant will share the signed hex transaction to another participant required to sign.</p>
+												<p style="text-align: center;" class="text-muted">The next participant will then sign the transaction using their own private key.</p>
+												<p style="text-align: center;" class="text-muted">Finally, once all signature conditions are met, the final output can be <a href="https://webwallet.bitcoinzerox.net/#broadcast" rel="noopener" target="_blank">broadcast</a>&nbsp;to the network.&nbsp;</p>
+												<hr>
+												
+												</div></p>
+												
+										</div>		
+												
+                                </div>
+                            </div>
+
+
+
+                        </div>
+						
+						<div class="tab-pane tab-content" id="manual_new_hd_address">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+										<div class="post-content" style="max-width:800px;margin:auto;">
+										
+											<p style="text-align: center;">
+												<div class="body-text">
+												<h2 id="h343sj9rwdjcg1705lrs1j082q91kvna9n" style="text-align: center;">Create a bitcoin HD Address</h2>
+												<p style="text-align: center;">HD (hierarchical deterministic) BIP 0032 addresses are commonly used with branded hardware devices and software wallets.</p>
+												<hr>
+												
+											
+												<p style="text-align: center;"><em>1)</em> Navigate to&nbsp;<a href="https://webwallet.bitcoinzerox.net/#newHDaddress">https://webwallet.bitcoinzerox.net/#newHDaddress</a>&nbsp;<em>(New &gt; HD Address.)</em></p>
+												<p style="text-align: center;"><em><img  src="./images/menu_new_ms_addr.png" width="100%"></em></p>
+												<p style="text-align: center;"><em><br>2) </em>Click<em> Generate.</em></p>
+												<p style="text-align: center;"><img height="151" src="./images/newaddresshdgen.gif" width="100%"></p>
+												<p style="text-align: center;">You can now use the HD address.</p>
+												<hr>
+												</div></p>
+												
+										</div>		
+												
+                                </div>
+                            </div>
+
+
+
+                        </div>
+						
+						
+						<div class="tab-pane tab-content" id="manual_verify">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+										<div class="post-content" style="max-width:800px;margin:auto;">
+										     
+											    <h4 id="h240sj9revdfy934vxn1kppl1z1apz93u" style="text-align: left;"></h4>
+												<h2 id="h160sj9ruq74nhynap919kwfs6csygjz" style="text-align: center;">Verify</h2>
+												<div class="body-text">
+												<p style="text-align: center;">Verify raw transactions, redeem scripts, pubkeys, hd addresses or WIF keys to ensure they are correct.&nbsp;</p>
+												<p style="text-align: center;" class="text-muted"><em>Use example: Bob has been provided a redeem script as part of a MultiSig transaction, he is the buyer in this example and has been asked to fund a bitcoinzero address.&nbsp; Bob can&nbsp;<strong>verify</strong> the redeem script to ensure legitimacy as per the trade agreement.&nbsp;<br>Use example 2: Bob wants to verify a generated transaction prior to broadcasting, to ensure it is correct.</em></p>
+												<hr>
+												
+											
+												<p style="text-align: center;"><em>1)</em> Navigate to&nbsp;<a href="https://webwallet.bitcoinzerox.net/#verify">https://webwallet.bitcoinzerox.net/#verify</a>&nbsp;<em>(Verify.)</em></p>
+												<p style="text-align: center;"><em><img src="./images/menu_verify.png" width="100%"></em></p>
+												<p style="text-align: center;"><em><br>2) </em>Input a&nbsp;<em>raw transaction, redeem script, pubkey, hd address or WIF key </em>in to the text field, then click <em>Submit.</em></p>
+												<p style="text-align: center;"><img  src="./images/verifyinput.png" width="100%"></p>
+												<p style="text-align: center;"><em>3) T</em>he verified output is displayed.&nbsp;</p>
+												<p style="text-align: center;"><img alt=""  src="./images/verifyoutput.png" width="100%"></p>
+												
+												</div></p>
+												
+										</div>		
+												
+                                </div>
+                            </div>
+
+
+
+                        </div>
+						
+						<div class="tab-pane tab-content" id="manual_sign">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+										<div class="post-content" style="max-width:800px;margin:auto;">
+											
+											   
+											    <h4 id="h246sj9revgsn1ox9rybfqmdimbnwmzm" style="text-align: left;"></h4>
+												<p style="text-align: center;">
+												<div class="body-text">
+												<h2 id="h160sj9ruq74nhynap919kwfs6csygjz" style="text-align: center;">Sign a Transaction</h2>
+												<p style="text-align: center;">You will need to sign a transaction before you can broadcast the transaction to the Bitcoinzero network.</p>
+												<hr>
+												<h4 id="h5sj9rpbw1ulpu15p2kzdn61ufsajs" style="text-align: center;"></h4>
+												<p style="text-align: center;"><em>1)</em> Navigate to&nbsp;https://webwallet.bitcoinzerox.net/#sign<em>(Sign.)</em></p>
+												<p style="text-align: center;"><img alt="" src="./images/menu_sign.png" width="100%"></p>
+												<p style="text-align: center;"><em><br>2) </em>Enter the <em>Private Key </em>required to sign the transaction, the <em>transaction hex</em> and click&nbsp;<em>Submit.&nbsp;</em></p>
+												<p style="text-align: center;"><img height="178" src="./images/signinput.gif" width="100%"></p>
+												<p style="text-align: center;"><em>3) </em>You are presented with a&nbsp;<em>signed hex encoded transaction</em>&nbsp;as confirmation.&nbsp;</p>
+												<p style="text-align: center;"><img alt="" height="301" src="./images/signoutput.gif" width="100%"></p>
+												</div></p>
+												
+										</div>		
+												
+                                </div>
+                            </div>
+
+
+
+                        </div>
+						
+						
+						<div class="tab-pane tab-content" id="manual_broadcast">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    
+										
+										<div class="post-content" style="max-width:800px;margin:auto;">
+										
+											    <h4 id="h251sj9revlu71awh7nswj57utun4dl7" style="text-align: center;"></h4>
+												<p style="text-align: center;">
+												<div class="body-text">
+												<h2 id="h160sj9ruq74nhynap919kwfs6csygjz" style="text-align: center;">Broadcast a Transaction</h2>
+												<p style="text-align: center;">You will need to broadcast a transaction to the Bitcoinzero network, this is the final step in most cases.&nbsp;</p>
+												<hr>
+												<h4 id="h5sj9rpbw1ulpu15p2kzdn61ufsajs" style="text-align: center;"></h4>
+												<p style="text-align: center;"><em>1)</em> Navigate to&nbsp;<a href="https://webwallet.bitcoinzerox.net/#broadcast">https://webwallet.bitcoinzerox.net/#broadcast</a>&nbsp;<em>(Broadcast.)</em></p>
+												<p style="text-align: center;"><img alt="" src="./images/menu_broadcast.png" width="100%"></p>
+												<p style="text-align: center;"><em><br>2) Enter your hex encoded bitcoin transaction&nbsp;</em>and click&nbsp;<em>Submit.</em></p>
+												<p style="text-align: center;"><img alt="" height="118" src="./images/broadcastinput.png" width="100%"></p>
+												<p style="text-align: center;"><em>3) </em>You are presented with a&nbsp;<em>txid:</em> as confirmation.&nbsp;</p>
+												<p style="text-align: center;"><img alt="" height="145" src="./images/broadcastoutput.png" width="100%"></p>
+												<p style="text-align: center;"><em>3.a)</em>&nbsp;You can use the txid to confirm your transaction (normally within minutes.)</p>
+												<p style="text-align: center;"><img alt="" height="373" src="./images/txconfirmation.png" width="100%"></p>
+                                                </div>
+												</p>
+												
+										</div>		
+												
+                                </div>
+                            </div>
+
+
+
+                        </div>
+						
+						
+						<div class="tab-pane tab-content" id="manual_wallet">
+                            <h2>Manual</h2>
+                            
+
+                            <div class="row">
+                                <div class="col-md-12" >
+                                    
+								            
+											<div class="post-content" style="max-width:800px;margin:auto;">
+											
+												<h4 id="h255sj9revopb1cmwxj81mavh689oqvts" style="text-align: center;"></h4>
+                                                <div class="body-text">
+												<h2 id="h160sj9ruq74nhynap919kwfs6csygjz" style="text-align: center;">How to use Wallet</h2>
+												<p style="text-align: center;">This page can generate a wallet within your web browser, using JavaScript. You do not need to be connected to the internet to generate/access a wallet, but you will not see an accurate balance without connection.&nbsp;</p>
+												<hr>
+												<p style="text-align: center;"><em>1)</em> Navigate to&nbsp;<a href="/#wallet" rel="noopener" target="_blank">https://webwallet.bitcoinzerox.net/#wallet</a>&nbsp;<em>(Wallet.)</em></p>
+												<p style="text-align: center;"><em><img src="./images/menu_wallet.png" width="100%"></em></p>
+												<p style="text-align: center;"><em><br>2) </em>Enter an <em>email address</em> and<em> password </em>then click&nbsp;<em>Submit.</em></p>
+												<p style="text-align: center;"><img height="162" src="./images/wallet2.gif" width="100%"></p>
+												<p style="text-align: center;"><em>3) </em>You are now logged in to a wallet.&nbsp;</p>
+												<p style="text-align: center;"><img height="198" src="./images/wallet3.gif" width="100%"></p>
+												<h4>&nbsp;</h4>
+												<p style="text-align: center;"><em>4)</em> You can <em>Spend</em> (send) bitcoinzero directly from your wallet (internet connection required.)</p>
+												<p style="text-align: center;">Fill out the&nbsp;<em>Spend</em> requirements;&nbsp;<em>Address &amp; Amount (you can add multiple lines ’+’) and finally the Transaction Fee. </em></p>
+												<p style="text-align: center;"><img alt="" height="399" src="./images/wallet5.gif" width="100%">&nbsp;</p>
+												<p style="text-align: center;"><em>4a) </em>Click<em> Send </em>to present a confirmation prompt.&nbsp;</p>
+												<p style="text-align: center;"><img alt="" height="618" src="./images/sendnobalancerrorfixed.gif" width="100%"></p>
+												<p style="text-align: center;"><em>4b)</em> After clicking<em> Send </em>within the confirmation&nbsp;prompt,<em>&nbsp;t</em>he transaction has been broadcast to the bitcoinzero network, a <em>txid</em> is presented.&nbsp;</p>
+												<p style="text-align: center;"><img alt="" height="218" src="./images/sendnobalancerrorfixedtx.gif" width="100%"></p>
+												<p style="text-align: center;"><em>4c) Example of incorrect amounts set. (Remember to calculate fee cost from balance.)</em></p>
+												<p style="text-align: center;"><em><img src="./images/sendnobalancerror.gif"></em></p>
+												<p style="text-align: center;"><em>5)</em> View your wallet keys.&nbsp;</p>
+												<p style="text-align: center;"><img alt="" height="399" src="./images/wallet6.gif" width="100%"></p>
+												<p style="text-align: center;"><em>Note: you can reveal your private key by clicking Show.</em></p>
+												<p style="text-align: center;"><em>6) </em>Be sure to <em>Logout </em>of your wallet when you are finished.&nbsp;</p>
+												<hr>
+												</div>
+												
+											</div>	
+												
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+						
+						
+						<hr>
+                        <p class="text-muted">This page uses javascript to generate your addresses and sign your transactions within your browser, this means we <i>never</i> receive your private keys, this can be independently verified by reviewing the source code on <a href="https://github.com/2infinity-gh/bzx-webwallet"
                                 target="_blank">github</a></p>
 						<p class="text-muted">Always consider using this page offline.</p>
 								
@@ -1481,7 +1737,7 @@
 
             <div id="footer">
                 <div class="container text-right">
-                    <p class="text-muted">Version 1.4</p>
+                    <p class="text-muted">Version v1.0</p>
                 </div>
             </div>
 
@@ -1589,7 +1845,7 @@
 							-->
 
                                     <select id="mediatorList" class="form-control">
-								<option value="02b6231cc602740c29436eafbb6448880f4058cc3d2745c709deee313104678277;support@coinb.in;1">Coinb.in</option>
+								<option value="contact@bitcoinzerox.net">Bitcoinzero</option>
 							</select>
                                 </div>
 
@@ -1631,7 +1887,8 @@
                         </div>
 
                         <div class="modal-body">
-                            Please be aware that you have created a transaction with what seems to be a very high fee of <span id="modalWarningFeeAmount"></span> BZX!
+                            Please be aware that you have created a transaction with what seems to be a very high fee of <span id="modalWarningFeeAmount"></span> BZX!<br>
+							If you're funds exceed the amount you're sending please add a changeaddress to receive the unspent amount.	
                         </div>
 
                         <div class="modal-footer">
@@ -1641,8 +1898,38 @@
                 </div>
             </div>
             <!-- warning (fee) modal -->
+			
+			
+			            <!-- Low (fee) modal -->
+            <div class="modal fade" id="modalLowFee" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title"><b>Warning Low Fee!</b></h4>
+                        </div>
+
+                        <div class="modal-body">
+                            Please be aware that you have created a transaction with what seems to have a fee of <span id="modalLowFeeAmount"></span> BZX!<br>
+							The minimum transaction-fee is 0.001 BZX.
+						
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" id="warningFeeClose">OK, I've got it!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Low (fee) modal -->
+			
 
             <div class="hidden" id="entropybucket"></div>
-    </body>
+			<script type="text/javascript">
+		
+		particlesJS("particles-js", {"particles":{"number":{"value":80,"density":{"enable":true,"value_area":800}},"color":{"value":"#ffffff"},"shape":{"type":"circle","stroke":{"width":0,"color":"#000000"},"polygon":{"nb_sides":5},"image":{"src":"img/github.svg","width":100,"height":100}},"opacity":{"value":0.15,"random":false,"anim":{"enable":false,"speed":1,"opacity_min":0.1,"sync":false}},"size":{"value":5,"random":true,"anim":{"enable":false,"speed":40,"size_min":0.1,"sync":false}},"line_linked":{"enable":true,"distance":150,"color":"#ffffff","opacity":0.4,"width":1},"move":{"enable":true,"speed":3,"direction":"none","random":false,"straight":false,"out_mode":"out","bounce":false,"attract":{"enable":false,"rotateX":600,"rotateY":1200}}},"interactivity":{"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"repulse"},"onclick":{"enable":true,"mode":"push"},"resize":true},"modes":{"grab":{"distance":400,"line_linked":{"opacity":1}},"bubble":{"distance":400,"size":40,"duration":2,"opacity":8,"speed":2},"repulse":{"distance":200,"duration":0.4},"push":{"particles_nb":4},"remove":{"particles_nb":2}}},"retina_detect":true});
+		</script>
+   
+   </body>
 
 </html>
